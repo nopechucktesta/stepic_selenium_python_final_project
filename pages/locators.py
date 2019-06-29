@@ -3,6 +3,12 @@ from selenium.webdriver.common.by import By
 
 class BasePageLocators(object):
     LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
+    VIEW_BASKET_LINK = (By.CSS_SELECTOR, ".basket-mini a.btn.btn-default")
+
+
+class CartPageLocators(object):
+    BASKET_ITEMS = (By.CSS_SELECTOR, ".basket-items")
+    EMPTY_CART_MESSAGE = (By.XPATH, "//div[@id='content_inner']/p[contains(text(), 'Your basket is empty')]")
 
 
 class LoginPageLocators(object):
