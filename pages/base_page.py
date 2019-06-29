@@ -1,6 +1,8 @@
 import math
 
-from selenium.common.exceptions import NoSuchElementException, NoAlertPresentException
+from selenium.common.exceptions import NoSuchElementException, NoAlertPresentException, TimeoutException
+from selenium.webdriver.support import expected_conditions
+from selenium.webdriver.support.wait import WebDriverWait
 
 
 class BasePage(object):
@@ -18,6 +20,13 @@ class BasePage(object):
         except NoSuchElementException:
             return False
         return True
+
+    def is_not_element_present(self, how, what, timeout=4):
+        try:
+            WebDriverWait(self.browser, timeout).until(expected_conditions.presence_of_element_located((how, what)))
+        except TimeoutException:
+            return True
+        return False
 
     def solve_quiz_and_get_code(self):
         alert = self.browser.switch_to.alert

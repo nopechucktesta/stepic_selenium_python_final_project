@@ -23,6 +23,10 @@ class ProductPage(BasePage):
     def product_price(self):
         return self.browser.find_element(*ProductPageLocators.PRODUCT_PRICE).text
 
+    def should_not_be_success_message(self):
+        assert self.is_not_element_present(*ProductPageLocators.HAS_BEEN_ADDED_TO_BASKET_MESSAGE_PRODUCT_NAME), \
+            "Success message is presented, but should not be"
+
     def wait_for_product_has_been_added_message(self):
         return WebDriverWait(self.browser, 5).until(expected_conditions.presence_of_element_located(
             ProductPageLocators.HAS_BEEN_ADDED_TO_BASKET_MESSAGE_PRODUCT_NAME))
