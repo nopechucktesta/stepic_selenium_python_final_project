@@ -8,3 +8,8 @@ class LoginPageLocators(object):
 
 class MainPageLocators(object):
     LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
+
+
+class ProductPageLocators(object):
+    PRODUCT_NAME = (By.CSS_SELECTOR, "article.product_page .product_main h1")
+    PRODUCT_PRICE = (By.CSS_SELECTOR, "article.product_page .product_main .price_color")
